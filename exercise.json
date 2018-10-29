@@ -1,1 +1,1 @@
-{"pack":"32","id":2,"title":"List of races","specs":[{"name":"src/app/app.component.spec.ts","hash":"14926b47bb0e4a0cc4c773bc9c2c6f9dd543195a"},{"name":"src/app/races/races.component.spec.ts","hash":"fe5b3b6047dfd7982ce607c4078bfaee88ee5e82"}]}
+{"pack":"32","id":3,"title":"Race service","specs":[{"name":"src/app/race.service.spec.ts","hash":"66153938f6b00185fb96922ba20049e516bb5ae8"},{"name":"src/app/races/races.component.spec.ts","hash":"a9996463b9cfc94625fec8ab555d56828e21e01c"}]}
