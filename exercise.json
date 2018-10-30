@@ -1,1 +1,1 @@
-{"pack":"32","id":3,"title":"Race service","specs":[{"name":"src/app/race.service.spec.ts","hash":"66153938f6b00185fb96922ba20049e516bb5ae8"},{"name":"src/app/races/races.component.spec.ts","hash":"a9996463b9cfc94625fec8ab555d56828e21e01c"}]}
+{"pack":"32","id":4,"title":"Using pipes","specs":[{"name":"src/app/race.service.spec.ts","hash":"8cb2d1a884b46002f026a9bc95aa67b8662a90c4"},{"name":"src/app/races/races.component.spec.ts","hash":"c6e019ffcd78d95d8cd30511fc0b26ee5ab4b3ef"}]}
