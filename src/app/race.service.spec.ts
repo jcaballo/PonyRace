@@ -22,7 +22,10 @@ describe('RaceService', () => {
 
     tick(400);
 
-    expect(fetchedRaces.length).toBe(5, 'The service should return five races in an Observable for the `list()` method after 500ms');
+    expect(fetchedRaces.length).toBe(2, 'The service should return two races in an Observable for the `list()` method after 500ms');
+    const paris = fetchedRaces[0];
+    expect(paris.name).toBe('Paris');
+    expect(paris.ponies.length).toBe(5, 'The races should include the ponies');
   }));
 
 });
