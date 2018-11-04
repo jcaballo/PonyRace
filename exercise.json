@@ -1,1 +1,1 @@
-{"pack":"32","id":7,"title":"Pony component","specs":[{"name":"src/app/pony/pony.component.spec.ts","hash":"71a4565c78833855f1a5f7d9aa35d46b2a42def6"},{"name":"src/app/race/race.component.spec.ts","hash":"f20896cd1c523ec89c13edcf4811cf413102e5cc"}]}
+{"pack":"32","id":8,"title":"HTTP","specs":[{"name":"src/app/race.service.spec.ts","hash":"7f5bca8dae176fbe1a4e8c71f9b43b67220448de"}]}
