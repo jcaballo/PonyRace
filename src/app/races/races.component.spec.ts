@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 
@@ -12,7 +13,7 @@ describe('RacesComponent', () => {
   const service = jasmine.createSpyObj('RaceService', ['list']);
 
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [AppModule],
+    imports: [AppModule, RouterTestingModule],
     providers: [{ provide: RaceService, useValue: service }]
   }));
 
