@@ -4,14 +4,25 @@
     <div>
       <label *ngIf="(loginCtrl.dirty && loginCtrl.hasError('required'))">Login is required</label>
     </div>
+    <div id="login-length-error">
+      <label *ngIf="(loginCtrl.dirty && loginCtrl.hasError('minlength'))">Your login should be at least 3 characters</label>
+    </div>
+  </div>
+  <div formGroupName="passwordForm">
+    <label for="password" id="password-label">Password</label><input id="password" class="form-control" type="password"
+      formControlName="password">
+    <label *ngIf="(passwordCtrl.dirty && passwordCtrl.hasError('required'))">Password is required</label>
+
+    <label for="confirmPassword" id="confirmPassword-label">Confirm password</label><input id="confirmPassword" class="form-control"
+      type="password" formControlName="confirmPassword">
+    <div id="password-matching-error">
+      <label *ngIf="(passwordForm.dirty && passwordForm.hasError('matchingError'))">Your password does not match</label>
+    </div>
   </div>
   <div>
-      <label for="password" id="password-label">Password</label><input id="password" class="form-control" type="password" formControlName="password">
-      <label *ngIf="(passwordCtrl.dirty && passwordCtrl.hasError('required'))">Password is required</label>
-  </div>
-  <div>
-      <label for="birthYear" id="birthYear-label">Password</label><input id="birthYear" class="form-control" type="number" formControlName="birthYear">
-      <label *ngIf="(birthYearCtrl.dirty && birthYearCtrl.hasError('required'))">Birth year is required</label>
+    <label for="birthYear" id="birthYear-label">Birth year</label><input id="birthYear" class="form-control" type="number"
+      formControlName="birthYear">
+    <label *ngIf="(birthYearCtrl.dirty && birthYearCtrl.hasError('required'))">Birth year is required</label>
   </div>
   <button type="submit" [disabled]="userForm.invalid">Let’s go!</button>
 </form>

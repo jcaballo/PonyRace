@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { RaceService } from './race.service';
-import { RaceModel } from './models/race.model';
+import { RaceModel } from '../models/race.model';
 
 describe('RaceService', () => {
 

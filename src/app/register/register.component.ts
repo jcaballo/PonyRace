@@ -8,19 +8,35 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
   userForm: FormGroup;
+  passwordForm: FormGroup;
+
   loginCtrl: FormControl;
   passwordCtrl: FormControl;
+  confirmPasswordCtrl: FormControl;
   birthYearCtrl: FormControl;
 
   constructor(fb: FormBuilder) {
-    this.loginCtrl = fb.control('', [Validators.required]);
     this.passwordCtrl = fb.control('', [Validators.required]);
+    this.confirmPasswordCtrl = fb.control('', [Validators.required]);
+    this.passwordForm = fb.group({
+      password: this.passwordCtrl,
+      confirmPassword: this.confirmPasswordCtrl
+    }, { validator: RegisterComponent.passwordMatch });
+
+    this.loginCtrl = fb.control('', [Validators.required, Validators.minLength(3)]);
     this.birthYearCtrl = fb.control('', [Validators.required]);
     this.userForm = fb.group({
       login: this.loginCtrl,
-      password: this.passwordCtrl,
+      passwordForm: this.passwordForm,
       birthYear: this.birthYearCtrl
     });
+  }
+
+  static passwordMatch(group: FormGroup): any {
+    if (group.get('password').value !== group.get('confirmPassword').value) {
+      return { matchingError: true };
+    }
+    return null;
   }
 
   ngOnInit() {

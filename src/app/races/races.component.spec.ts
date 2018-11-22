@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { AppModule } from '../app.module';
 import { RacesComponent } from './races.component';
 import { RaceComponent } from '../race/race.component';
-import { RaceService } from '../race.service';
+import { RaceService } from '../services/race.service';
 
 describe('RacesComponent', () => {
 
