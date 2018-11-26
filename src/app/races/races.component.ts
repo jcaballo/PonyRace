@@ -1,4 +1,4 @@
-import { RaceService } from '../services/race.service';
+import { RaceService } from '../race.service';
 import { Component, OnInit } from '@angular/core';
 import { RaceModel } from '../models/race.model';
 

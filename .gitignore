@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 results
 results/karma-results.json
+debug.log
+results/protractor-results.json
+results/karma-results.json
