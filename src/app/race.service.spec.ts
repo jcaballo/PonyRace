@@ -30,7 +30,9 @@ describe('RaceService', () => {
     http.expectOne('http://ponyracer.ninja-squad.com/api/races?status=PENDING')
       .flush(hardcodedRaces);
 
-    expect(actualRaces.length).not.toBe(0, 'The `list` method should return an array of RaceModel wrapped in an Observable');
+    expect(actualRaces.length)
+      .withContext('The `list` method should return an array of RaceModel wrapped in an Observable')
+      .not.toBe(0);
     expect(actualRaces).toEqual(hardcodedRaces);
   });
 

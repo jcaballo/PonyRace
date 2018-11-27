@@ -36,6 +36,6 @@ describe('UserService', () => {
     expect(req.request.body).toEqual({ login: user.login, password: 'password', birthYear: 1986 });
     req.flush(user);
 
-    expect(actualUser).toBe(user, 'You should emit the user.');
+    expect(actualUser).withContext('You should emit the user.').toBe(user);
   });
 });

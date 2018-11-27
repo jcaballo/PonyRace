@@ -3,37 +3,39 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { RouterLinkWithHref } from '@angular/router';
 import { By } from '@angular/platform-browser';
 
-import { AppModule } from '../app.module';
 import { MenuComponent } from './menu.component';
 
 describe('MenuComponent', () => {
 
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [AppModule, RouterTestingModule]
+    imports: [RouterTestingModule],
+    declarations: [MenuComponent]
   }));
 
   it('should have a `navbarCollapsed` field', () => {
     const menu: MenuComponent = new MenuComponent();
     menu.ngOnInit();
     expect(menu.navbarCollapsed)
-      .toBe(true, 'Check that `navbarCollapsed` is initialized with `true`.' +
-        'Maybe you forgot to declare `navbarCollapsed` in your component.');
+      .withContext('Check that `navbarCollapsed` is initialized with `true`.' +
+        'Maybe you forgot to declare `navbarCollapsed` in your component.')
+      .toBe(true);
   });
 
   it('should have a `toggleNavbar` method', () => {
     const menu: MenuComponent = new MenuComponent();
     expect(menu.toggleNavbar)
-      .not.toBeNull('Maybe you forgot to declare a `toggleNavbar()` method');
+      .withContext('Maybe you forgot to declare a `toggleNavbar()` method')
+      .not.toBeNull();
 
     menu.toggleNavbar();
 
     expect(menu.navbarCollapsed)
-      .toBe(false, '`toggleNavbar()` should change `navbarCollapsed` from `true` to `false`');
+      .withContext('`toggleNavbar()` should change `navbarCollapsed` from `true` to `false`').toBe(false);
 
     menu.toggleNavbar();
 
     expect(menu.navbarCollapsed)
-      .toBe(true, '`toggleNavbar()` should change `navbarCollapsed` from false to true`');
+      .withContext('`toggleNavbar()` should change `navbarCollapsed` from false to true`').toBe(true);
   });
 
   it('should toggle the class on click', () => {
@@ -43,18 +45,21 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
 
     const navbarCollapsed = element.querySelector('#navbar');
-    expect(navbarCollapsed).not.toBeNull('No element with the id `#navbar`');
-    expect(navbarCollapsed.classList).toContain('collapse', 'The element with the id `#navbar` should have the class `collapse`');
+    expect(navbarCollapsed).withContext('No element with the id `#navbar`').not.toBeNull();
+    expect(navbarCollapsed.classList)
+      .withContext('The element with the id `#navbar` should have the class `collapse`')
+      .toContain('collapse');
 
     const button = element.querySelector('button');
-    expect(button).not.toBeNull('No `button` element to collapse the menu');
+    expect(button).withContext('No `button` element to collapse the menu').not.toBeNull();
     button.dispatchEvent(new Event('click'));
 
     fixture.detectChanges();
 
     const navbar = element.querySelector('#navbar');
-    expect(navbar.classList).not
-      .toContain('collapse', 'The element with the id `#navbar` should have not the class `collapse` after a click');
+    expect(navbar.classList)
+      .withContext('The element with the id `#navbar` should have not the class `collapse` after a click')
+      .not.toContain('collapse');
   });
 
   it('should use routerLink to navigate', () => {
@@ -63,6 +68,6 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
 
     const links = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
-    expect(links.length).toBe(2, 'You should have two routerLink: one to the races, one to the home');
+    expect(links.length).withContext('You should have two routerLink: one to the races').toBe(2);
   });
 });

@@ -1,0 +1,3 @@
+[1122/214508.277:ERROR:crash_report_database_win.cc(569)] CreateDirectory C:\Users\JCABAL~1\AppData\Local\Temp\karma-81922669\Crashpad: The system cannot find the path specified. (0x3)
+[1122/214508.287:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[1122/214508.290:ERROR:crash_report_database_win.cc(569)] CreateDirectory C:\Users\JCABAL~1\AppData\Local\Temp\karma-81922669\Crashpad: The system cannot find the path specified. (0x3)

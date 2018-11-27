@@ -1,14 +1,12 @@
 import { async, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
-import { AppModule } from '../app.module';
 import { PonyComponent } from './pony.component';
 import { PonyModel } from '../models/pony.model';
 
 describe('PonyComponent', () => {
 
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [AppModule, RouterTestingModule]
+    declarations: [PonyComponent]
   }));
 
   it('should have method to get the image URL', () => {
@@ -20,7 +18,7 @@ describe('PonyComponent', () => {
     const url = ponyComponent.getPonyImageUrl();
 
     // then we should have a nice URL
-    expect(url).toBe('assets/images/pony-purple.gif', 'The URL built with `getPonyImageUrl` is not correct');
+    expect(url).withContext('The URL built with `getPonyImageUrl` is not correct').toBe('assets/images/pony-purple.gif');
   });
 
   it('should display an image and a legend', () => {
@@ -36,12 +34,12 @@ describe('PonyComponent', () => {
     // then we should have an image and a legend
     const element = fixture.nativeElement;
     const image = element.querySelector('img');
-    expect(image).not.toBeNull('You should have an image for the pony');
-    expect(image.getAttribute('src')).toBe('assets/images/pony-purple.gif', 'The `src` attribute of the image is not correct');
-    expect(image.getAttribute('alt')).toBe('Fast Rainbow', 'The `alt` attribute for the image is not correct');
+    expect(image).withContext('You should have an image for the pony').not.toBeNull();
+    expect(image.getAttribute('src')).withContext('The `src` attribute of the image is not correct').toBe('assets/images/pony-purple.gif');
+    expect(image.getAttribute('alt')).withContext('The `alt` attribute for the image is not correct').toBe('Fast Rainbow');
     const legend = element.querySelector('figcaption');
-    expect(legend).not.toBeNull('You should have a `figcaption` element for the pony');
-    expect(legend.textContent).toContain('Fast Rainbow', 'The `figcaption` element should display the pony\'s name');
+    expect(legend).withContext('You should have a `figcaption` element for the pony').not.toBeNull();
+    expect(legend.textContent).withContext('The `figcaption` element should display the pony\'s name').toContain('Fast Rainbow');
   });
 
   it('should emit an event on click', async(() => {
@@ -53,7 +51,7 @@ describe('PonyComponent', () => {
     ponyComponent.ponyModel = { id: 1, name: 'Fast Rainbow', color: 'PURPLE' };
 
     ponyComponent.ponyClicked.subscribe((pony: PonyModel) => {
-      expect(pony).toBe(ponyComponent.ponyModel, 'The output should emit the `ponyModel` on a click');
+      expect(pony).withContext('The output should emit the `ponyModel` on a click').toBe(ponyComponent.ponyModel);
       ponyClickedCalled = true;
     });
 
@@ -62,11 +60,11 @@ describe('PonyComponent', () => {
 
     const element = fixture.nativeElement;
     const figure = element.querySelector('figure');
-    expect(figure).not.toBeNull('You should have a `figure` element for the pony');
+    expect(figure).withContext('You should have a `figure` element for the pony').not.toBeNull();
     expect(window.getComputedStyle(figure).getPropertyValue('padding-top'))
-      .toBe('3px', 'You must apply some styles to the `figure` element');
+      .withContext('You must apply some styles to the `figure` element').toBe('3px');
     figure.dispatchEvent(new Event('click'));
-    expect(ponyClickedCalled).toBeTruthy('You may have forgot the click handler on the `figure` element');
+    expect(ponyClickedCalled).withContext('You may have forgot the click handler on the `figure` element').toBeTruthy();
   }));
 
 });
