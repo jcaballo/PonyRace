@@ -1,13 +1,19 @@
-<h1>Log in</h1>
-<form (ngSubmit)="authenticate()">
-  <div class="form-group">
-    <label for="login">Login</label><input name="login" type="text" [(ngModel)]="credentials.login" required>
+<div class="row">
+  <div class="col-md-2 offset-md-2">
+    <h1>Log in</h1>
+    <form (ngSubmit)="authenticate()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="login">Login</label>
+        <input name="login" type="text" [(ngModel)]="credentials.login" required #login="ngModel">
+        <div *ngIf="login.dirty && login.hasError('required')">Login is required</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" type="password" [(ngModel)]="credentials.password" required #password="ngModel">
+        <div *ngIf="password.dirty && password.hasError('required')">Password is required</div>
+      </div>
+      <button type="submit" [disabled]="userForm.invalid">Register</button>
+    </form>
+    <div class="alert alert-danger" *ngIf="authenticationFailed">Nope, try again</div>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label><input name="password" type="password" [(ngModel)]="credentials.password"
-      required>
-  </div>
-  <div class="form-group">
-    <button type="submit">Submit</button>
-  </div>
-</form>
+</div>
