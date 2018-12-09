@@ -8,9 +8,11 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
+
   userEvents = new BehaviorSubject<UserModel>(undefined);
 
   constructor(private http: HttpClient) {
+    this.retrieveUser();
   }
 
   register(login: string, password: string, birthYear: number): Observable<any> {
@@ -21,8 +23,19 @@ export class UserService {
   authenticate(credentials: { login: string; password: string }): Observable<any> {
     return this.http.post('http://ponyracer.ninja-squad.com/api/users/authentication', credentials)
       .pipe(
-        tap(user => this.userEvents.next(user))
+        tap(user => this.storeLoggedInUser(user))
       );
   }
 
+  storeLoggedInUser(user: UserModel) {
+    window.localStorage.setItem('rememberMe', JSON.stringify(user));
+    return this.userEvents.next(user);
+  }
+
+  retrieveUser() {
+    const user = window.localStorage.getItem('rememberMe');
+    if (user) {
+      this.userEvents.next(JSON.parse(user));
+    }
+  }
 }
