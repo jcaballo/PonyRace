@@ -8,8 +8,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-
-  userEvents = new BehaviorSubject<UserModel>(undefined);
+   userEvents = new BehaviorSubject<UserModel>(undefined);
 
   constructor(private http: HttpClient) {
     this.retrieveUser();
@@ -37,5 +36,10 @@ export class UserService {
     if (user) {
       this.userEvents.next(JSON.parse(user));
     }
+  }
+
+  logout(): any {
+    this.userEvents.next(null);
+    window.localStorage.removeItem('rememberMe');
   }
 }
