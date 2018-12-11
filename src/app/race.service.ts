@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,7 +14,7 @@ export class RaceService {
 
   list(): Observable<Array<RaceModel>> {
     const params = { status: 'PENDING' };
-    return this.http.get<Array<RaceModel>>('http://ponyracer.ninja-squad.com/api/races', { params });
+    return this.http.get<Array<RaceModel>>(environment.baseUrl + '/api/races', { params });
   }
 
 }
