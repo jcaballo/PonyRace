@@ -1,3 +1,4 @@
+import { BetComponent } from './bet/bet.component';
 import { LoginComponent } from './login/login.component';
 import { Routes } from '@angular/router';
 
@@ -7,7 +8,12 @@ import { RegisterComponent } from './register/register.component';
 
 export const ROUTES: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'races', component: RacesComponent },
+  {
+    path: 'races', children: [
+      { path: '', component: RacesComponent },
+      { path: ':raceId', component: BetComponent }
+    ]
+  },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent }
 ];
