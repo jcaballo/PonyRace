@@ -21,9 +21,9 @@ export class RaceService {
     return this.http.get<RaceModel>(environment.baseUrl + '/api/races/' + raceId);
   }
 
-  bet(raceId: number, ponyId: number) {
+  bet(raceId: number, ponyId: number): Observable<RaceModel> {
     const body = { ponyId };
-    return this.http.post(environment.baseUrl + '/api/races/' + raceId + '/bets', body);
+    return this.http.post<RaceModel>(environment.baseUrl + '/api/races/' + raceId + '/bets', body);
   }
 
 }

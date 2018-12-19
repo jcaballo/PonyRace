@@ -28,7 +28,7 @@ export class UserService {
       );
   }
 
-  storeLoggedInUser(user: UserModel) {
+  storeLoggedInUser(user: any) {
     window.localStorage.setItem('rememberMe', JSON.stringify(user));
     this.jwtInterceptorService.setJwtToken(user.token);
     return this.userEvents.next(user);
