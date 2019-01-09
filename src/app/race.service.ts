@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { RaceModel, LiveRaceModel } from './models/race.model';
 import { PonyWithPositionModel } from './models/pony.model';
-import { map } from 'rxjs/operators';
+import { map, takeWhile } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,7 @@ export class RaceService {
 
   live(raceId: number): Observable<Array<PonyWithPositionModel>> {
     return this.wsService.connect<LiveRaceModel>(`/race/${raceId}`).pipe(
+      takeWhile(p => p.status !== 'FINISHED'),
       map(p => p.ponies)
     );
   }

@@ -5,10 +5,11 @@ export interface RaceModel {
   name: string;
   ponies: Array<PonyModel>;
   startInstant: string;
-  status?: string;
+  status?: 'PENDING' | 'RUNNING' | 'FINISHED';
   betPonyId?: number;
 }
 
 export interface LiveRaceModel {
   ponies: Array<PonyWithPositionModel>;
+  status: 'PENDING' | 'RUNNING' | 'FINISHED';
 }
