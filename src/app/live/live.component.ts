@@ -17,7 +17,7 @@ export class LiveComponent implements OnInit, OnDestroy {
   positionSubscription: Subscription;
   error = false;
   winners: Array<PonyWithPositionModel>;
-  betWon = false;
+  betWon: boolean;
 
   constructor(private raceService: RaceService, private activatedRoute: ActivatedRoute) { }
 
